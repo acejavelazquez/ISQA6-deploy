@@ -4,12 +4,26 @@
 <!doctype html>
 <html lang="en">
 
-{% block title %}Home{% endblock title %}
+   {% block title %}Home{% endblock title %}
 
-{% block content %}
-<div class="homeTitle">
-  <h1 class="display-4">Maverick Book Blog</h1>
+    {% block content %}
 
-</div>
-{% endblock content %}
+        <div class="homeTitle">
+            <h1 class="display-4">Maverick Book Blog</h1>
+        </div>
+        <div class="post">
+            <table border="1">
+                 <tr>
+                  <td>Row 1 - Col 1</td>
+                  <td rowspan="3">Row 1 - Col 2</td>
+                 </tr>
+                 <tr>
+                  <td>Row 2 - Col 1</td>
+                 </tr>
+                 <tr>
+                  <td>Row 2 - Col 1</td>
+                 </tr>
+            </table>
+        </div>
+    {% endblock content %}
 </html>
