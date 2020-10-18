@@ -1,5 +1,6 @@
 from django.utils import timezone
 from django.db import models
+from django.contrib.auth.models import User
 
 STATUS = (
     (0, "Draft"),
@@ -8,50 +9,7 @@ STATUS = (
 
 
 # Create your models here.
-class Follower(models.Model):
-    f_name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100)
-    city = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    zipcode = models.CharField(max_length=10)
-    phone_number = models.CharField(max_length=50)
-    created_date = models.DateTimeField(
-        default=timezone.now)
-    updated_date = models.DateTimeField(auto_now_add=True)
 
-    def created(self):
-        self.created_date = timezone.now()
-        self.save()
-
-    def updated(self):
-        self.updated_date = timezone.now()
-        self.save()
-
-    def __str__(self):
-        return str(self.f_name)
-
-
-class ContCreator(models.Model):
-    cc_name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100)
-    city = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    zipcode = models.CharField(max_length=10)
-    phone_number = models.CharField(max_length=50)
-    created_date = models.DateTimeField(
-        default=timezone.now)
-    updated_date = models.DateTimeField(auto_now_add=True)
-
-    def created(self):
-        self.created_date = timezone.now()
-        self.save()
-
-    def updated(self):
-        self.updated_date = timezone.now()
-        self.save()
-
-    def __str__(self):
-        return str(self.cc_name)
 
 
 class Genre(models.Model):
@@ -84,7 +42,7 @@ class Books(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(ContCreator, on_delete=models.CASCADE, related_name='blog_posts')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
     book = models.ForeignKey(Books, on_delete=models.CASCADE, related_name='Book')

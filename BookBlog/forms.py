@@ -1,13 +1,7 @@
 from django import forms
-from .models import Follower, ContCreator
+from django.contrib.auth.models import User
 
-
-class FollowerForm(forms.ModelForm):
+class UserForm(forms.ModelForm):
     class Meta:
-        model = Follower
-        fields = ('f_name', 'city', 'state', 'zipcode', 'email', 'phone_number')
-
-class CreatorForm(forms.ModelForm):
-    class Meta:
-        model = ContCreator
-        fields = ('cc_name', 'city', 'state', 'zipcode', 'email', 'phone_number')
+        model = User
+        fields = ('first_name', 'last_name', 'username', 'email', 'password', 'date_joined')

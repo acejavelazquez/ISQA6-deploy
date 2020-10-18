@@ -1,11 +1,11 @@
 from django.urls import reverse_lazy
 from django.views import generic
 from .models import Post
-from .forms import FollowerForm
+from .forms import UserForm
 
 
 class SignUpView(generic.CreateView):
-    form_class = FollowerForm
+    form_class = UserForm
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
 
